@@ -7,10 +7,10 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Site Title"
+title                    : "Aboobacker's world"
 title_separator          : "-"
-name                     : "Your Name"
-description              : "An amazing website."
+name                     : "Aboobacker MK"
+description              : "Personal website of Aboobacker MK"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 gh_repo                  :
@@ -18,9 +18,9 @@ teaser                   : # filename of teaser fallback teaser image placed in 
 # breadcrumbs            : false # true, false (default)
 words_per_minute         : 200
 comments:
-  provider               : # false (default), "disqus", "facebook", "google-plus", custom"
+  provider               : "disqus"
   disqus:
-    shortname            : # https://help.disqus.com/customer/portal/articles/466208-what-s-a-shortname-
+    shortname            : "aboobacker"
   facebook:
     # https://developers.facebook.com/docs/plugins/comments
     appid                :
@@ -61,19 +61,19 @@ google_ad_slot           :
 
 # Site Author
 author:
-  name             : "Your Name"
+  name             : "Aboobacker MK"
   avatar           : "bio-photo.jpg"
-  bio              : "I am an amazing person."
-  location         : "Somewhere"
-  email            :
+  bio              : "Just another human being who always want to learn something new."
+  location         : "Bangalore"
+  email            : "aboobackervyd@gmail.com"
   uri              :
-  bitbucket        :
+  bitbucket        : "abvayad"
   codepen          :
   dribbble         :
   flickr           :
-  facebook         :
+  facebook         : "aboobacker.mk"
   foursquare       :
-  github           :
+  github           : "tachyons"
   google_plus      :
   keybase          :
   instagram        :
@@ -84,7 +84,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          :
+  twitter          : "abvayad"
   vine             :
   weibo            :
   xing             :
