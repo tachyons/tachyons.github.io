@@ -2,7 +2,7 @@
 layout: single
 title: "Install Apertium Malayalam-english Pair Development Environment in Ubuntu"
 modified:
-categories: 
+categories:
 comments: true
 excerpt:
 tags: []
@@ -10,15 +10,14 @@ image:
   feature:
 date: 2014-08-20T07:13:36+05:30
 ---
-Apertium is an open source machine translation toolkit .It is an extensible platform so that new language pairs can be added easily . It is currently in incubator state , we have to do alot to to make it usefull for translation of real life examples . I created ppas for the tools to make the process easier
+Apertium is an open source machine translation toolkit .It is an extensible platform so that new language pairs can be added easily . It is currently in incubator state , we have to do a lot to to make it useful for translation of real life examples . I created ppas for the tools to make the process easier
 
 Platform : ubuntu :14.04
 
 * Add repositories
 
 ```bash
-sudo add-apt-repository ppa:aboobackervyd/apertium-dailybuild
-sudo add-apt-repository ppa:aboobackervyd/hfst-dailybuild
+wget http://apertium.projectjj.com/apt/install-nightly.sh -O - | sudo bash
 sudo add-apt-repository ppa:tinodidriksen/cg3
 ```
 
@@ -26,7 +25,8 @@ sudo add-apt-repository ppa:tinodidriksen/cg3
 
 ```bash
 sudo apt-get update
-sudo apt-get install lttoolbox apertium apertium-lex-tools  hfst cg3 subversion git-core autoconf
+sudo apt-get -f install locales build-essential automake subversion pkg-config gawk libtool apertium-all-dev
+
 ```
 
 * Install English Malayalam pair data
@@ -66,19 +66,4 @@ qmake
 make
 sudo make install
 ```
-Stucked ? Don’t worry just comment below . :-)
-
-#Update :
-If you get error
-configure: error: Package requirements (apertium >= 3.3.0) were not met:
-
-No package ‘apertium’ found
-Then
-
-```bash
-sudo gedit /usr/lib/pkgconfig/apertium.pc
-```
-
-paste this(http://pastebin.com/dTHCzKqp) file and save
-
-
+Stuck ? Don’t worry just comment below . :-)
