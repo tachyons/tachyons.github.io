@@ -1,7 +1,7 @@
 ---
 layout: single
 title: "Hire Me"
-date: 
+date:
 modified:
 excerpt:
 comments: true
@@ -12,3 +12,5 @@ image:
   creditlink: http://texturelovers.com
 ---
 Drop an email to aboobackervyd at gmail.com
+
+[CV](/images/aboobacker.pdf)
