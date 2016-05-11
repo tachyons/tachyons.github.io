@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Aboobacker's world"
 title_separator          : "-"
 name                     : "Aboobacker MK"
-description              : "Personal website of Aboobacker MK"
+description              : "Personal website of Aboobacker MK, Ruby on Rails developer in bangalore"
 url                      : # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : # the subpath of your site, e.g. "/blog"
 gh_repo                  :
@@ -63,7 +63,7 @@ google_ad_slot           :
 author:
   name             : "Aboobacker MK"
   avatar           : "bio-photo.jpg"
-  bio              : "Just another human being who always want to learn something new."
+  bio              : "Just another human being, Wannable software craftman."
   location         : "Bangalore"
   email            : "aboobackervyd@gmail.com"
   uri              :
