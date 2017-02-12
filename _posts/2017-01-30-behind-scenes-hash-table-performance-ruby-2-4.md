@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "behind-scenes-hash-table-performance-ruby-2-4"
+title: "Behind the scenes of hash table performance in ruby 2.4"
 modified:
 categories:
 excerpt:
