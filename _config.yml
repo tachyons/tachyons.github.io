@@ -62,7 +62,7 @@ google_ad_slot           :
 # Site Author
 author:
   name             : "Aboobacker MK"
-  avatar           : "images/bio-photo.jpg"
+  avatar           : "/images/bio-photo.jpg"
   bio              : "Just another human being , Software Engineer at red panthers"
   location         : "Kochi, Kerala, India"
   email            : "aboobackervyd@gmail.com"
