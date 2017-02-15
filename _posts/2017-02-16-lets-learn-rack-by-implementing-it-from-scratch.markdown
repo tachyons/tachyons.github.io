@@ -3,9 +3,11 @@ title: Let's learn rack by implementing it from scratch
 date: 2017-02-16T01:28:20+05:30
 ---
 
-Rack is a framework for ruby web frameworks. If you developed apps in ruby frameworks like rails , hanami , sinatra , you already used rack in your app . Almost all ruby webframeworks use rack under the hood , If you are already familar with rack then you can skip next step and goto rewriting part
+Rack is a framework for ruby web frameworks. If you developed apps in ruby frameworks like rails, hanami, Sinatra, you already used  Rack. Almost all ruby web frameworks use rack under the hood, If you are already familiar with rack then you can skip next step and go to re building  part
 
-Rack provides minimalistic api to interact , First let's have a look about rack
+## Introduction To Rack
+
+Rack provides minimalistic API to interact, First let's have a look at rack
 
 A rack app is an object which takes request environment hash and provides array of 3 elements the output, rack object should respond to the method ```call```
 
@@ -13,9 +15,9 @@ A rack app is an object which takes request environment hash and provides array 
 * Headers hash
 * response body object which responds to each
 
-Obvious question here is why does rack says about responding to particular method . This one of the powerfull paradigm available in ruby called [duck typing](https://en.wikipedia.org/wiki/Duck_typing) . ie rack doesn't care about object or it's implementation as long as it responds to the particular method
+The obvious question here is why does rack says about responding to the particular method. This one of the powerful paradigm available in ruby called [duck typing](https://en.wikipedia.org/wiki/Duck_typing). ie rack doesn't care about the object or it's implementation as long as it responds to the particular method
 
-Let's take a look at a simple example
+Let's take a look at a simple example.
 
 Install rack 
 
@@ -32,13 +34,13 @@ run Proc.new { |env| ['200', {'Content-Type' => 'text/html'}, ['Hello World\'d']
 
 and run the command ```rackup```
 
-Now open browser and vist ```localhost:9292```
+Now open the browser and vist ```localhost:9292```
 
 Congratulations !, You just made a rack app with just a single line
 
 Now let's have look at the above example
 
-We have a proc object which responds to [call](https://ruby-doc.org/core-2.2.0/Proc.html#method-i-call) method . also an array consist of
+We have a proc object which responds to [call](https://ruby-doc.org/core-2.2.0/Proc.html#method-i-call) method. also an array consist of
 
 ```200``` as Status code
 
@@ -46,7 +48,7 @@ We have a proc object which responds to [call](https://ruby-doc.org/core-2.2.0/P
 and 
 ```['Hello World \'d']``` as body
 
-Since rack do not care about the kind of rack object , we can do the same using class or an object
+Since rack do not care about the kind of rack object, we can do the same using class or an object
 
 ```ruby
 
@@ -68,7 +70,7 @@ end
 
 run SuperCoolApp.new
 ```
-But this doesn't do anything interesting , this will just display ```Hello World``` for all requests . Because we were returning same output without even considering the parameter ```env``` . Let's have a look into by returning env hash as output 
+But this doesn't do anything interesting, this will just display ```Hello World``` for all requests . Because we were returning same output without even considering the parameter ```env``` . Let's have a look into by returning env hash as output 
 
 ```ruby
 class CoolApp
@@ -106,7 +108,7 @@ You can implement your own logic using the env variable provided by rack
 
 Rack also provides [Rack Request](http://www.rubydoc.info/gems/rack/Rack/Request) Abstraction which provides a convenient interface to a Rack environment.
 
-But that is not the end , rack also provides feature called middleware , which let you use multiple rack apps as pipeline . ie output of one rack app will feed as input to next rack app . Let's check that by one example
+But that is not the end, rack also provides feature called middleware, which let you use multiple rack apps as pipeline . ie output of one rack app will feed as input to next rack app . Let's check that by one example
 
 ```ruby
 class ReverseOutput
@@ -131,12 +133,12 @@ use ReverseOutput
 run CoolApp
 ```
 
-Here we made a simple middle ware ```ReverseOutput``` which will reverse the response body, You can add any number of middlewares like this, also you can use pre defined middlewares provided by rack and open source general purpose middlewares . [List of middlewares](https://github.com/rack/rack/wiki/List-of-Middleware) 
+Here we made a simple middleware ```ReverseOutput``` which will reverse the response body, You can add any number of middlewares like this, also you can use pre defined middlewares provided by the rack and open source general purpose middlewares. [List of middlewares](https://github.com/rack/rack/wiki/List-of-Middleware) 
 
 ## Building from scratch
-Now let's have a look at how the rack works by making a rack like library from scratch, Let's name it Srack. But one obvious question here is why rackup file is ```config.ru``` , not ```config.rb``` ? . Also from where the methods like use , run etc are coming
+Now let's have a look at how the rack works by making a rack like library from scratch, Let's name it Srack. But one obvious question here is why rackup file is ```config.ru```, not ```config.rb``` ? . Also from where the methods like use, run etc are coming
 
-Let's look at our first code sample in diffrent way
+Let's look at our first code sample in a different way
 
 ```ruby
 # app.rb
@@ -158,7 +160,7 @@ rspec ./spec/srack_spec.rb:8 # Srack does something useful
 
 And it is true, we haven't done anything useful yet
 
-First thing we have to do is to build an executable equiallant to rackup , Let's call it srackup
+First thing we have to do is to build an executable equiallant to rackup, Let's call it srackup
 
 ```
 touch exe/srackup
@@ -184,7 +186,7 @@ module Srack
 end
 ```
 
-Now we have Srack::Server.start method . But it is doing nothing . Since we want Server object , we can delegate our start method to it's instance method .
+Now we have Srack::Server.start method. But it is doing nothing. Since we want Server object, we can delegate our start method to it's instance method.
 
 ```ruby
 module Srack
@@ -278,7 +280,7 @@ module Srack
 end
 
 ```
-First method is self explanatory , it just read file and pass the file body to ```new_from_string``` . The method ```new_from_string``` takes the file contents , convert it into a proc and pass to ```Rack::Builder.new``` . So that we can execute the contentents of config.ru in the context of the builder
+The first method is self-explanatory, it just read the file and passes the file body to ```new_from_string``` . The method ```new_from_string``` takes the file contents, convert it into a proc and pass to ```Rack::Builder.new``` . So that we can execute the contents of config.ru in the context of the builder
 
 Remember our first rack app ? 
 ```ruby
@@ -318,7 +320,7 @@ module Srack
 end
 ```
 
-Now we have Builder class , But start method in ```Srack::Server``` class is still empty , In order to do that we have to connect to some real server . Remeber when we mentioned rack is an interface to web servers ? 
+Now we have Builder class, But start method in ```Srack::Server``` class is still empty, In order to do that we have to connect to some real server. Remember when we mentioned rack is an interface to web servers? 
 
 ```ruby
 module Srack
@@ -338,7 +340,7 @@ module Srack
 end
 ```
 
-Srack will have handlers for each type of servers , So that we can global api for handlers, ie all handlers should respond to ```run``` method with 2 arguments ```@app``` and ```@options```
+Srack will have handlers for each type of servers, So that we can global api for handlers, ie all handlers should respond to ```run``` method with 2 arguments ```@app``` and ```@options```
 
 ```ruby
 # lib/srack/handler.rb`
@@ -370,7 +372,7 @@ module Srack
 end
 ```
 
-Here made handler module which can accomodate multple handlers , In this example we used thin as the default server . To use thin inside our app , we have to include it in our ```srack.gemspec``` 
+Here made handler module which can accomodate multple handlers, In this example we used thin as the default server . To use thin inside our app, we have to include it in our ```srack.gemspec``` 
 ```ruby
 spec.add_dependency "thin"
 ```
@@ -387,11 +389,11 @@ Just goto the directory with the file ```config.ru``` and run ```srackup```
 
 ## Implementing middleware
 
-As discussed earlier one of the widely used feature in rack is middleware . Let's see how it works
+As discussed earlier one of the widely used feature in the rack is middleware. Let's see how it works
 
-A middle ware will take the output(triplet) of rack app and modify it and give to next middleware or the app
+A middleware will take the output(triplet) of rack app and modify it and give to next middleware or the app
 
-We can make some tweaks in ```Srackup::Builder``` to accomodate this
+We can make some tweaks in ```Srackup::Builder``` to accommodate this
 
 ```ruby
 ...
@@ -420,13 +422,13 @@ end
 ...
 ```
 
-Here we defined an extra method ```use``` which will accept middleware as input . Also we have a new instance varaible array ```@use``` which will store procs which accept app as input and returns new middleware object in return
+Here we defined an extra method ```use``` which will accept middleware as input. Also we have a new instance variable array ```@use``` which will store procs which accept app as input and returns new middleware object in return
 
-Also we changed ```to_app``` in such way that middlewares will be executed in the reverse order of calling 
+Also, we changed ```to_app``` in such way that middlewares will be executed in the reverse order of calling 
 
 Now our app can also handle middlewares
 
-If something is missing, or getting some errors , you can cross check with my [repo here](https://github.com/tachyons/srack)
+If something is missing, or getting some errors, you can cross check with my [repo here](https://github.com/tachyons/srack)
 
 ### References
 * https://github.com/rack
