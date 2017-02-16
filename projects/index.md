@@ -1,6 +1,6 @@
 ---
 layout: single
-title: "My Projects"
+title: "Personal Projects"
 date: 
 modified:
 excerpt: "Projects of Aboobacker MK"
