@@ -42,10 +42,7 @@ Congratulations !, You just made a rack app with just a single line
 
 Now let's have look at the above example
 
-We have a proc object which responds to [call](https://ruby-doc.org/core-2.2.0/Proc.html#method-i-call) method. also an array consist of
-
-```200``` as Status code
-
+We have a proc object which responds to [call](https://ruby-doc.org/core-2.2.0/Proc.html#method-i-call) method. ```200```as status  code  , an array consist of
 ```{'Content-Type' => 'text/html'}``` as Response header
 and 
 ```['Hello World \'d']``` as body
