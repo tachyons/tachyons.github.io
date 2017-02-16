@@ -1,6 +1,8 @@
 ---
 title: Let's learn rack by implementing it from scratch
 date: 2017-02-16T01:28:20+05:30
+comments: true 
+tags: ['ruby','rack']
 ---
 
 Rack is a framework for ruby web frameworks. If you developed apps in ruby frameworks like rails, hanami, Sinatra, you already used  Rack. Almost all ruby web frameworks use rack under the hood, If you are already familiar with rack then you can skip next step and go to re building  part
