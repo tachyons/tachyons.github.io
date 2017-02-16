@@ -24,7 +24,7 @@ Let's take a look at a simple example.
 Install rack 
 
 ```bash
-  gem install bash
+  gem install rack
 ```
 
 create a file with name ```config.ru```
