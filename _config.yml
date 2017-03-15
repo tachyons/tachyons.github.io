@@ -35,7 +35,7 @@ yandex_site_verification :
 
 # Social Sharing
 twitter:
-  username               : "abvayad"
+  username               : "_tachyons"
 facebook:
   username               :
   app_id                 :
@@ -66,7 +66,7 @@ author:
   bio              : "Just another human being , Software Engineer at red panthers"
   location         : "Kochi, Kerala, India"
   email            : "aboobackervyd@gmail.com"
-  uri              : "https://aboobacker.in"
+  uri              : "http://aboobacker.in"
   bitbucket        : "abvayad"
   codepen          :
   dribbble         :
@@ -84,7 +84,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "abvayad"
+  twitter          : "_tachyons'
   vine             :
   weibo            :
   xing             :
