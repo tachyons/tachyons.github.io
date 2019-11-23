@@ -6,8 +6,6 @@ comments: true
 excerpt:
 layout: single
 tags: []
-header:
-  teaser: "markup-syntax-highlighting-teaser.jpg"
 tags: 
 image:
   feature:
