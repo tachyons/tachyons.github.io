@@ -11,6 +11,7 @@ image:
   credit: Texture Lovers
   creditlink: http://texturelovers.com
 ---
-Drop an email to aboobackervyd at gmail.com
+
+Drop an email to aboobackervyd at gmail.com, you can find my CV below
 
 [CV](/images/aboobacker.pdf)

@@ -10,5 +10,5 @@ image:
   creditlink: http://texturelovers.com
 ---
 
-A guy who is passionate about technology . 
+Software Engineer who is interested in programming and technologies in general. 
 
