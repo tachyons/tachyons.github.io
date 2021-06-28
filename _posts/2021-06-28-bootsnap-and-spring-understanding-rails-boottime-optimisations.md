@@ -1,6 +1,6 @@
 ---
 layout: single
-title: Bootsnap and Spring, Understaning rails boottime optimisations
+title: Bootsnap and Spring, Understanding rails boottime optimisations
 description: 'High level overview about how bootsnap and spring works'
 tags: ['bootsnap', 'rails', 'spring']
 date: 2021-06-28 14:03 +0530
