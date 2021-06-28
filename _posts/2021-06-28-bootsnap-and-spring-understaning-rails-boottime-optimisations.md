@@ -291,4 +291,6 @@ load path for a library is not something that changes very often, especially for
 
 Another important optimization by bootsnap is the compilation cache. We covered the ruby compilation process in the beginning and saw that every single file needed to go through the compilation process every single time they got called. Bootsnap addresses this by caching yarv code(instruction sequence) and compiling the code only if the code changes.
 
-There are also other optimised YAML loading by caching in an optimised format. overall Bootsnap gives impressive benefits as it works on production as well. We got about 30% reduction in boottime for our production ecommerce app
+There are also other optimised YAML loading by caching in an optimised format. overall Bootsnap gives impressive benefits as it works on production as well. We got about 30% reduction in boottime for our production ecommerce app.
+
+Note: This was originaly presented in internal tech talk in Sephora and made some tweaks to the content for wider audience.
