@@ -73,3 +73,7 @@ This can cause performance bottlenecks due to the SAVEPOINT behaviour, Skipping 
 
 4. Last but the not least is adding a transaction block where it is not necessary, for instance if there won't any data corruption if the operations ran individually, or the impact is very minimal which gets fixed on background worker retry, then avoid using database transactions
 
+Also checkout these two great gems which allows us to reduce transaction burdern on database
+
+1. [after_commit_everywhere](https://github.com/Envek/after_commit_everywhere)
+2. [isolator](https://github.com/palkan/isolator)
