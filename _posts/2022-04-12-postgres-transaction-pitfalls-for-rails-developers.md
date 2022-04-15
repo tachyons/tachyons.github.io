@@ -7,13 +7,13 @@ tags: ['rails', 'postgres']
 
 ---
 
-Rails abstract away of a lot of database stuff away using Active record which is very convenient. But the convince can bite back if we are not careful enough. 
+Rails abstract lot of database stuff away using Active record which is very convenient. But the convenience can bite back if we are not careful enough. 
 
 Here I am going to list some common mistakes rails developers make and how to avoid them.
 
 1. Having network calls on rails after_create/before_create callbacks
     
-Active record provides callback methods to do some operations based on the changes in data. it includes before_create, after_create, after_commit etc. Rails wrap before_create and after_create inside the same transaction so that it can roll back when the exception is raised from these callbacks. after_commit is raised after the transaction is committed to the database. So if you have calls like
+Active record provides callback methods to perform some operations based on the changes in data. it includes `before_create`, `after_create`, `after_commit` etc. Rails wrap before_create and after_create inside the same transaction so that it can roll back when the exception is raised from any of these callbacks. after_commit is executed after the transaction is committed to the database. So if you have calls like
 
 ```ruby
 class MyModel <ApplicationRecord
@@ -25,7 +25,7 @@ class MyModel <ApplicationRecord
 end
 ```
 
-The transaction will open for a long and that will cause locks and potentially deadlocks on tables. 
+The transaction will remain open for long time and that will cause locks and potentially deadlocks on tables. 
 
 Solutions:
 
@@ -35,7 +35,7 @@ Solutions:
 
 2. Scheduling Background jobs from after_create/before_create callbacks
 
-This is very similar to the previous point, as the backgrounds jobs typically use another data store like Redis and the communication will be over the network. This may not be significant on a small scale if the Redis is in the same infra and network latency is not significant. But any performance degradation on redis infra will cause a sudden spike in long transactions and can potentially cause cascading failures on infra.
+This is very similar to the previous point, as the backgrounds jobs typically use another data store like Redis and the communication will be over the network. This may not be significant on a small scale if the Redis is in the same infra and network latency is not significant. But any performance degradation on redis infra will cause a sudden spike in long transactions and can potentially cause cascading failures on the infrastructure.
 
 Solutions:
 
@@ -71,9 +71,9 @@ end
 	
 This can cause performance bottlenecks due to the SAVEPOINT behaviour, Skipping it here as Gilab wrote a great blog on this [here](https://about.gitlab.com/blog/2021/09/29/why-we-spent-the-last-month-eliminating-postgresql-subtransactions/)
 
-4. Last but the not least is adding a transaction block where it is not necessary, for instance if there won't any data corruption if the operations ran individually, or the impact is very minimal which gets fixed on background worker retry, then avoid using database transactions
+4. Last but the not least is about adding transaction block where it is not necessary, for instance if there won't any data corruption if the operations ran individually, or the impact is very minimal which gets fixed on background worker retry, then avoid using database transactions
 
-Also checkout these two great gems which allows us to reduce transaction burdern on database
+Also checkout these two great gems which allows us to reduce transaction burdern on database. 
 
 1. [after_commit_everywhere](https://github.com/Envek/after_commit_everywhere)
 2. [isolator](https://github.com/palkan/isolator)
